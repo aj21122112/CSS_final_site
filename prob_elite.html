@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Probability of an Elite Season</title>
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <header>
+        <h1>Probability of an Elite Season</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a>
+                </li>
+                <li></li>
+                    <a href="elite_v_age.html">Elite WR Production and Age</a>
+                </li>
+                <li class="current">
+                    <a href="prob_elite.html">Elite Season Probability</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main id="main-content" tabindex="-1">
+    <h2>
+        Probability Model-Building
+    </h2>
+    <div>
+        From the previous analyses we know that mean WR years in the league, draft pick, and draft round are significantly different between elite and non-elite WRs on a season-by-season basis. Draft pick and round are essentially the same so I'll use draft pick and years in the league to make two regression models that can predict the likelihood of an elite season given career years and draft pick.<br>
+        Models:
+        <ol>
+            <li>Standard Linear Regression (no interaction between years in league and draft pick)</li>
+            <li>Logistic Regression (interaction between years in league and draft pick)</li>
+        </ol>
+        Below are the elite season probabilites of different draft picks (high to low) over the course of 12 years in the NFL from the two different models. In the first model (no interaction) a high (first round) draft pick follows the same trajectory of elite season chances as an extremely low draft pick. It's saying that around the 6th year in the NFL is the peak probability ANY given draft pick will have an elite season. Intuitively, this doesn't actually make sense because first-rounders don't usually take six seasons to become high-production players. In the second model (interaction between years in the league and draft pick), the peak probability of an elite season changes for players throughout the draft (which makes much more seanse). Higher draft picks have a peak probability of being elite much earlier in their careers, whereas mid-round and low draft peaks have peak probabilities much later.
+    </div>
+
+    <div class="grid">
+        <img src="images/elite_prob_m1.png" alt="Model 1 probabilities">
+        <img src="images/elite_prob_m2.png" alt="Model 2 probabilities">
+    </div>
+
+    <div>
+        Now I'll visualize these models more granularly with heat maps. These heatmaps show the probabilities of an elite season for each individual draft pick in each year of their career. Model 1 shows highest probabilites around the 6 year mark, model 2 shows higher probabilities earlier in the careers of high draft picks and later in the careers of lower draft picks.
+    </div>
+
+    <div class="grid">
+        <img src="images/m1_heatmap.png" alt="Model 1 probabilities">
+        <img src="images/m2_heatmap.png" alt="Model 2 probabilities">
+    </div>
+
+    <div>I said before the model 2 makes more sense intuitively, but how does each model compare to the real raw data? Below are two side-by-side comparisons of the heatmaps for each model against the raw counts of elite WR seasons for each draft pick and career year. The raw counts generally line up better with model 2, with higher density in the top right (higher draft pick, earlier career year) of the heat map. This shows that model 2 is a better fit for this data and can be used more reliably to predict an elite season from any given WR.</div>
+
+    <div class="grid">
+        <img src="images/counts_heatmap.png" alt="Raw counts of elite wr seasons by dradt pick and career NFL years">
+        <img src="images/m1_heatmap.png" alt="Model 1 probabilities">
+    </div>
+
+    <div class="grid">
+        <img src="images/counts_heatmap.png" alt="Raw counts of elite wr seasons by dradt pick and career NFL years">
+        <img src="images/m2_heatmap.png" alt="Model 2 probabilities">
+    </div>
+    </main>
+</body>
+</html>
